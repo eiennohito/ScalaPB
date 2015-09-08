@@ -1681,6 +1681,9 @@ public final class Scalapb {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeBool(30, forced_);
       }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBool(30, forced_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -1691,6 +1694,10 @@ public final class Scalapb {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.GeneratedMessage.computeStringSize(1, type_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(30, forced_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
