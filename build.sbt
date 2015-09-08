@@ -174,3 +174,11 @@ createVersionFile <<= (streams, baseDirectory, version in Compile) map {
     streams.log.info(s"Created $f2")
 }
 
+publishTo := {
+  val nexus = "http://10.228.147.22:9500/nexus/content/repositories/"
+  if (isSnapshot.value)
+    Some("snapshots" at nexus + "snapshots")
+  else
+    Some("releases"  at nexus + "releases")
+}
+
