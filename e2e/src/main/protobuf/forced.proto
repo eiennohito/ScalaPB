@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package proto.e2e;
+
+import "scalapb/scalapb.proto";
+
+message Something {
+  int32 a = 1 [(scalapb.field).forced = true];
+  float b = 5 [(scalapb.field).forced = true];
+  repeated int64 objs = 7 [packed = true];
+}

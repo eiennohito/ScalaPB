@@ -40,6 +40,7 @@ extend google.protobuf.MessageOptions {
 
 message FieldOptions {
   optional string type = 1;
+  optional bool forced = 30;
 }
 
 extend google.protobuf.FieldOptions {

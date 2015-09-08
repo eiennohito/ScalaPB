@@ -1516,6 +1516,15 @@ public final class Scalapb {
      */
     com.google.protobuf.ByteString
         getTypeBytes();
+
+    /**
+     * <code>optional bool forced = 30;</code>
+     */
+    boolean hasForced();
+    /**
+     * <code>optional bool forced = 30;</code>
+     */
+    boolean getForced();
   }
   /**
    * Protobuf type {@code scalapb.FieldOptions}
@@ -1530,6 +1539,7 @@ public final class Scalapb {
     }
     private FieldOptions() {
       type_ = "";
+      forced_ = false;
     }
 
     @java.lang.Override
@@ -1563,6 +1573,11 @@ public final class Scalapb {
               com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000001;
               type_ = bs;
+              break;
+            }
+            case 240: {
+              bitField0_ |= 0x00000002;
+              forced_ = input.readBool();
               break;
             }
           }
@@ -1633,6 +1648,21 @@ public final class Scalapb {
       }
     }
 
+    public static final int FORCED_FIELD_NUMBER = 30;
+    private boolean forced_;
+    /**
+     * <code>optional bool forced = 30;</code>
+     */
+    public boolean hasForced() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional bool forced = 30;</code>
+     */
+    public boolean getForced() {
+      return forced_;
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -1648,6 +1678,9 @@ public final class Scalapb {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         com.google.protobuf.GeneratedMessage.writeString(output, 1, type_);
       }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBool(30, forced_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -1658,6 +1691,10 @@ public final class Scalapb {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.GeneratedMessage.computeStringSize(1, type_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(30, forced_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1773,6 +1810,8 @@ public final class Scalapb {
         super.clear();
         type_ = "";
         bitField0_ = (bitField0_ & ~0x00000001);
+        forced_ = false;
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -1801,6 +1840,10 @@ public final class Scalapb {
           to_bitField0_ |= 0x00000001;
         }
         result.type_ = type_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.forced_ = forced_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1821,6 +1864,9 @@ public final class Scalapb {
           bitField0_ |= 0x00000001;
           type_ = other.type_;
           onChanged();
+        }
+        if (other.hasForced()) {
+          setForced(other.getForced());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -1922,6 +1968,38 @@ public final class Scalapb {
   }
   bitField0_ |= 0x00000001;
         type_ = value;
+        onChanged();
+        return this;
+      }
+
+      private boolean forced_ ;
+      /**
+       * <code>optional bool forced = 30;</code>
+       */
+      public boolean hasForced() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional bool forced = 30;</code>
+       */
+      public boolean getForced() {
+        return forced_;
+      }
+      /**
+       * <code>optional bool forced = 30;</code>
+       */
+      public Builder setForced(boolean value) {
+        bitField0_ |= 0x00000002;
+        forced_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool forced = 30;</code>
+       */
+      public Builder clearForced() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        forced_ = false;
         onChanged();
         return this;
       }
@@ -2049,14 +2127,14 @@ public final class Scalapb {
       "/protobuf/descriptor.proto\"L\n\016ScalaPbOpt" +
       "ions\022\024\n\014package_name\030\001 \001(\t\022\024\n\014flat_packa" +
       "ge\030\002 \001(\010\022\016\n\006import\030\003 \003(\t\"!\n\016MessageOptio" +
-      "ns\022\017\n\007extends\030\001 \003(\t\"\034\n\014FieldOptions\022\014\n\004t" +
-      "ype\030\001 \001(\t:G\n\007options\022\034.google.protobuf.F" +
-      "ileOptions\030\374\007 \001(\0132\027.scalapb.ScalaPbOptio" +
-      "ns:J\n\007message\022\037.google.protobuf.MessageO" +
-      "ptions\030\374\007 \001(\0132\027.scalapb.MessageOptions:D" +
-      "\n\005field\022\035.google.protobuf.FieldOptions\030\374",
-      "\007 \001(\0132\025.scalapb.FieldOptionsB\030\n\026com.true" +
-      "accord.scalapb"
+      "ns\022\017\n\007extends\030\001 \003(\t\",\n\014FieldOptions\022\014\n\004t" +
+      "ype\030\001 \001(\t\022\016\n\006forced\030\036 \001(\010:G\n\007options\022\034.g" +
+      "oogle.protobuf.FileOptions\030\374\007 \001(\0132\027.scal" +
+      "apb.ScalaPbOptions:J\n\007message\022\037.google.p" +
+      "rotobuf.MessageOptions\030\374\007 \001(\0132\027.scalapb." +
+      "MessageOptions:D\n\005field\022\035.google.protobu",
+      "f.FieldOptions\030\374\007 \001(\0132\025.scalapb.FieldOpt" +
+      "ionsB\030\n\026com.trueaccord.scalapb"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -2088,7 +2166,7 @@ public final class Scalapb {
     internal_static_scalapb_FieldOptions_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_scalapb_FieldOptions_descriptor,
-        new java.lang.String[] { "Type", });
+        new java.lang.String[] { "Type", "Forced", });
     options.internalInit(descriptor.getExtensions().get(0));
     message.internalInit(descriptor.getExtensions().get(1));
     field.internalInit(descriptor.getExtensions().get(2));
